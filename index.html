@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/render_clients.js" defer></script>
+    <script src="./js/add_client.js" defer></script>
 </head>
 <body>
     <header>
@@ -19,66 +21,43 @@
     </header>
 
     <main class="main">
-        <section class="main_header">
-            <h1 class="main_title">Клиенты</h1>
-            <div class="main_columns">
-                <div class="column_id">
-                    <p>ID</p>
-                    <img src="./resourses/sort_up.svg" alt="" class="sort">
-                </div>
-                <div class="column_fio">
-                    <p>Фамилия Имя Отчество</p>
-                    <img src="./resourses/sort_down.svg" alt="" class="sort">
-                </div>
-                <div class="column_creation_date">
-                    <p>Дата и время создания</p>
-                    <img src="./resourses/sort_down.svg" alt="" class="sort">
-                </div>
-                <div class="column_last_change">
-                    <p>Последние изменения</p>
-                    <img src="./resourses/sort_down.svg" alt="" class="sort">
-                </div class="column_contact">
-                <div class="column_contacts">
-                    <p>Контакты</p>
-                </div>
-                <div class="column_actions">
-                    <p>Действия</p>
-                </div>
-            </div>
-        </section>
-        <section class="main_body">
-            <div class="clients">
-                <!-- отрисовка криентов в js  -->
-                <div class="client">
-                    <p class="client_id">123445</p>
-                    <p class="client_fio">Громов Алексей Викторович</p>
-                    <p class="client_creation_date">21.06.2021</p>
-                    <p class="client_creation_time">12:51</p>
-                    <p class="client_last_change_date">21.06.2021</p>
-                    <p class="client_last_change_time">12:51</p>
-                    <div class="client_contacts">
-                        <img src="./resourses/vk_contact_icon.svg" alt="" class="client_contact_icon" title="vk.com/youngmetrodonttrustyou">
+        <div class="container">
+            <section class="main_header">
+                <h1 class="main_title">Клиенты</h1>
+                <div class="main_columns">
+                    <div class="column_id">
+                        <p>ID</p>
+                        <img src="./resourses/sort_up.svg" alt="" class="sort">
                     </div>
-                    <div class="client_actions">
-                        <button class="client_action_btn">
-                            <img src="./resourses/edit_icon.svg" alt="" class="action_img">
-                            Изменить
-                        </button>
-                        <button class="client_action_btn">
-                            <img src="./resourses/remove_icon.svg" alt="" class="action_img">
-                            Удалить
-                        </button>
+                    <div class="column_fio">
+                        <p>Фамилия Имя Отчество</p>
+                        <img src="./resourses/sort_down.svg" alt="" class="sort">
                     </div>
-                    <!-- сделать див и в него закидывать код через innerHTML -->
+                    <div class="column_creation_date">
+                        <p>Дата и время создания</p>
+                        <img src="./resourses/sort_down.svg" alt="" class="sort">
+                    </div>
+                    <div class="column_last_change">
+                        <p>Последние изменения</p>
+                        <img src="./resourses/sort_down.svg" alt="" class="sort">
+                    </div class="column_contact">
+                    <div class="column_contacts">
+                        <p>Контакты</p>
+                    </div>
+                    <div class="column_actions">
+                        <p>Действия</p>
+                    </div>
                 </div>
-                <!-- конец кода для отрисовки -->
-                
-            </div>
-            <button class="body_add">
-                <img src="./resourses/add_client_btn_icon.svg" alt="+" class="body_add_icon">
-                Добавить клиента
-            </button>
-        </section>
+            </section>
+            <section class="main_body">
+                <div class="clients">
+                </div>
+                <button class="body_add">
+                    <img src="./resourses/add_client_btn_icon.svg" alt="+" class="body_add_icon">
+                    Добавить клиента
+                </button>
+            </section>
+        </div>
     </main>
 
     <form action="#" class="hide add_form">
@@ -91,6 +70,8 @@
                 <input type="text" class="modal_add_inp" placeholder="Отчество"> 
             </div>
             <div class="modal_add_contacts">
+                <div class="contacts">
+                </div>
                 <button class="modal_add_contact">
                     <img src="./resourses/add_contact_icon.svg" alt="+" class="modal_add_contact_icon">
                     Добавить контакт
@@ -103,7 +84,7 @@
         </div>
     </form>
 
-    <form action="#" class="modal edit_form">
+    <form action="#" class="hide edit_form">
         <div class="modal_inner">
             <div class="modal_add_header">
                 <img src="./resourses/cross_icon.svg" alt="" class="close_modal">
@@ -157,6 +138,17 @@
             </div>
         </div>
     </form>
+
+
+    <div class="hide">
+        <div class="modal_inner delete_accept">
+            <img src="./resourses/cross_icon.svg" alt="" class="close_modal">
+            <h1 class="delete_title ">Удалить клиента</h1>
+            <p class="delete_text">Вы действительно хотите удалить данного клиента?</p>
+            <button class="modal_add_save del_accept_btn">Удалить</button>
+            <button class="modal_add_cancel del_cancel">Отмена</button>
+        </div>
+    </div>
     
     
 </body>

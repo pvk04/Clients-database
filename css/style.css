@@ -1,8 +1,9 @@
 html, body{
     font-family: 'Open Sans', sans-serif;
-    font-size: 62.5%;
+    font-size: 100%;
     font-weight: normal;
     margin: 0;
+    background: #F5F5F5;
 }
 
 img {
@@ -27,6 +28,7 @@ button{
 
 .header{
     display: flex;
+    justify-content: center;
     width: 100%;
     height: 9rem;
     box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
@@ -56,7 +58,10 @@ button{
 
 .main{
     margin: 4rem 2rem;
+    display: flex;
+    justify-content: center;
 }
+
 
 .main_header{
     display: block;
@@ -198,6 +203,8 @@ button{
 }
 
 .body_add{
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 4rem;
     width: 21.6rem;
     height: 4.4rem;
@@ -266,6 +273,9 @@ button{
     border: none;
     border-bottom: .2rem solid #C8C5D1;
     outline: none;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: #333333;
 }
 
 .modal_add_inp:not(:last-child){
@@ -294,6 +304,11 @@ button{
     background: none;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: #333333;
+
 }
 
 .contact_type_select{
@@ -381,3 +396,35 @@ button{
     color: #B0B0B0;
 }
 
+.delete_accept{
+    gap: 0;
+}
+
+.delete_title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    margin-top: 2.2rem;
+    margin-bottom: 1rem;
+    color: #333333;
+}
+
+.delete_text{
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    max-width: 27rem;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: #333333;
+}
+
+.del_accept_btn{
+    margin: 0 auto;
+}
+
+.del_cancel{
+    margin-top: .5rem;
+    margin-bottom: 2.7rem;
+}
