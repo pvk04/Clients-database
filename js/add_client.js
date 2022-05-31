@@ -1,3 +1,5 @@
+import { renderClients } from "./render_clients.js";
+
 const modalAdd = () => {
     let buttonAdd = document.querySelector(".body_add");
     let modalAdd = document.querySelector(".add_form");
@@ -7,7 +9,6 @@ const modalAdd = () => {
     let conctactsCounter = 0;
     let saveContact = modalAdd.querySelector(".modal_add_save");
     let cancelSave = modalAdd.querySelector(".modal_add_cancel");
-    let arr = JSON.parse(localStorage.getItem("clients"));
     
     buttonAdd.addEventListener("click", () => {
         modalAdd.classList.add("modal");
@@ -47,8 +48,7 @@ const modalAdd = () => {
     
             contactsDiv.append(contact);
             delBtns();
-    
-     
+            renderClients();
             return conctactsCounter++
         }
         else{
@@ -57,17 +57,38 @@ const modalAdd = () => {
     });
     
     saveContact.addEventListener("click", () => {
+        let arr = JSON.parse(localStorage.getItem("clients"));
         let currTime = new Date;
+        let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
+        let contacts = modalAdd.querySelectorAll(".contact");
         let contact = {
             id: arr.length,
-            name: joinFio(modalAdd.querySelectorAll(".modal_add_inp")),
+            fio: joinFio(fioInputs),
             createTime: currTime,
             lastChange: currTime,
             contacts: creationGetContacts()
         }
+
         arr.push(contact);
         localStorage.setItem("clients", JSON.stringify(arr));
         renderClients();
+        for (let inp of fioInputs){
+            inp.value = "";
+        }
+        for (let contact of contacts){
+            contact.remove();
+        }
+    });
+
+    cancelSave.addEventListener("click", () => {
+        let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
+        let contacts = modalAdd.querySelectorAll(".contact");
+        for (let inp of fioInputs){
+            inp.value = "";
+        }
+        for (let contact of contacts){
+            contact.remove();
+        }
     });
     
     function creationGetContacts(){
@@ -103,4 +124,3 @@ const modalAdd = () => {
 }
 
 modalAdd()
-

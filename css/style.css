@@ -133,6 +133,7 @@ button{
     align-items: center;
     color: #333333;
     width: 106.2rem;
+    min-height: 6.7rem;
     background: white;
     border-bottom: .15rem solid #C8C5D1;
     border-radius: 0px;
@@ -144,12 +145,14 @@ button{
     padding-left: 2rem;
     padding-right: 2.8rem;
     max-width: 4.2rem;
+    min-width: 3.4em;
     word-wrap: break-word;
 }
 
 .client_fio{
     padding-right: 4.2rem;
     max-width: 16.9rem;
+    min-width: 16.9rem;
     word-wrap: normal;
 }
 

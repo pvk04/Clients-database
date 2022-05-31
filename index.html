@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/render_clients.js" defer></script>
-    <script src="./js/add_client.js" defer></script>
+    <script src="./js/render_clients.js" type="module" defer></script>
+    <script src="./js/add_client.js" type="module" defer></script>
+    <script src="./js/edit_client.js" type="module" defer></script>
 </head>
+
 <body>
     <header>
         <div class="header">
@@ -67,7 +70,7 @@
                 <h1 class="modal_add_title">Новый клиент</h1>
                 <input type="text" class="modal_add_inp" placeholder="Фамилия*">
                 <input type="text" class="modal_add_inp" placeholder="Имя*">
-                <input type="text" class="modal_add_inp" placeholder="Отчество"> 
+                <input type="text" class="modal_add_inp" placeholder="Отчество">
             </div>
             <div class="modal_add_contacts">
                 <div class="contacts">
@@ -79,7 +82,7 @@
             </div>
             <div class="modal_add_btns">
                 <button class="modal_add_save">Соханить</button>
-                <button class="modal_add_cancel">Отмена</button>                
+                <button class="modal_add_cancel">Отмена</button>
             </div>
         </div>
     </form>
@@ -97,7 +100,7 @@
                 <p class="edit_form_inp_title">Имя*</p>
                 <input type="text" class="modal_add_inp" placeholder="Имя*">
                 <p class="edit_form_inp_title">Отчество</p>
-                <input type="text" class="modal_add_inp" placeholder="Отчество"> 
+                <input type="text" class="modal_add_inp" placeholder="Отчество">
             </div>
             <div class="modal_add_contacts">
                 <div class="contact">
@@ -131,16 +134,16 @@
                     Добавить контакт
                 </button>
             </div>
-            
+
             <div class="modal_add_btns">
                 <button class="modal_add_save">Соханить</button>
-                <button class="modal_add_cancel">Удалить клиента</button>                
+                <button class="modal_add_cancel">Удалить клиента</button>
             </div>
         </div>
     </form>
 
 
-    <div class="hide">
+    <div class="hide modal_delete_accept">
         <div class="modal_inner delete_accept">
             <img src="./resourses/cross_icon.svg" alt="" class="close_modal">
             <h1 class="delete_title ">Удалить клиента</h1>
@@ -149,7 +152,8 @@
             <button class="modal_add_cancel del_cancel">Отмена</button>
         </div>
     </div>
-    
-    
+
+
 </body>
+
 </html>

@@ -1,24 +1,17 @@
-const clients = [
-    {
-        id: "000001",
-        fio: "Панчурин Евгений Сегреевич",
-        createTime: new Date(),
-        lastChange: new Date(),
-        contacts: [
-            {type: "vk", value: "youngmetrodonttrustme"},
-            {type: "phone", value: "124457589"},
-            {type: "mail", value: "klava.koka@mail.com"},
-            {type: "fb", value: "lohloh321"},
-            {type: "other", value: "Drake"}
-        ]
-    }
-]
-localStorage.setItem("clients", JSON.stringify(clients));
+// let contact = [{
+//             id: 0,
+//             fio: " 13131 31 123sdfg",
+//             createTime: new Date,
+//             lastChange: new Date,
+//             contacts: [{type: "vk", value: "123"}]
+//         }];
+// localStorage.setItem("clients", JSON.stringify(contact));
 
 
-function renderClients(){
-    let array = JSON.parse(localStorage.getItem("clients"));
+export function renderClients(){
+    let array = JSON.parse(localStorage.getItem("clients")) || [];
     let div = document.querySelector(".clients");
+    div.innerHTML = "";
 
 
     for (let element of array){
@@ -36,11 +29,11 @@ function renderClients(){
             ${getContacts(element)}
         </div>
         <div class="client_actions">
-            <button class="client_action_btn">
+            <button class="client_action_btn edit_action">
                 <img src="./resourses/edit_icon.svg" alt="" class="action_img">
                 Изменить
             </button>
-            <button class="client_action_btn">
+            <button class="client_action_btn remove_action">
                 <img src="./resourses/remove_icon.svg" alt="" class="action_img">
                 Удалить
             </button>
@@ -53,7 +46,6 @@ renderClients();
 
 function convertDate(element){
     element = new Date(element);
-    console.log(element)
     let day = element.getDate();
     day = addZero(day);
 
