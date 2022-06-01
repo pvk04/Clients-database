@@ -1,4 +1,5 @@
 import { renderClients } from "./render_clients.js";
+import { actions } from "./edit_client.js";
 
 const modalAdd = () => {
     let buttonAdd = document.querySelector(".body_add");
@@ -6,9 +7,10 @@ const modalAdd = () => {
     let modalAddClose = modalAdd.querySelector(".close_modal");
     let contactsDiv = modalAdd.querySelector(".contacts");
     let addContact = modalAdd.querySelector(".modal_add_contact");
-    let conctactsCounter = 0;
+    let contactsCounter = 0;
     let saveContact = modalAdd.querySelector(".modal_add_save");
     let cancelSave = modalAdd.querySelector(".modal_add_cancel");
+    let id = 0;
     
     buttonAdd.addEventListener("click", () => {
         modalAdd.classList.add("modal");
@@ -29,10 +31,10 @@ const modalAdd = () => {
     });
     
     addContact.addEventListener("click", () => {
-        if (conctactsCounter <= 9) {
+        if (contactsCounter <= 9) {
             let contact = document.createElement("div");
             contact.classList.add("contact");
-            contact.id = conctactsCounter;
+            contact.id = contactsCounter;
             contact.innerHTML = `
             <select name="contact_type" class="contact_type_select">
                 <option value="phone">Телефон</option>
@@ -48,8 +50,7 @@ const modalAdd = () => {
     
             contactsDiv.append(contact);
             delBtns();
-            renderClients();
-            return conctactsCounter++
+            return contactsCounter++
         }
         else{
             return
@@ -61,8 +62,9 @@ const modalAdd = () => {
         let currTime = new Date;
         let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
         let contacts = modalAdd.querySelectorAll(".contact");
+        id++
         let contact = {
-            id: arr.length,
+            id,
             fio: joinFio(fioInputs),
             createTime: currTime,
             lastChange: currTime,
@@ -71,13 +73,14 @@ const modalAdd = () => {
 
         arr.push(contact);
         localStorage.setItem("clients", JSON.stringify(arr));
-        renderClients();
         for (let inp of fioInputs){
             inp.value = "";
         }
         for (let contact of contacts){
             contact.remove();
         }
+        renderClients();
+        actions()
     });
 
     cancelSave.addEventListener("click", () => {
@@ -117,7 +120,7 @@ const modalAdd = () => {
         for (let i = 0; i < btns.length; i++){
             btns[i].addEventListener("click", () => {
                 contacts[i].remove();
-                conctactsCounter--
+                contactsCounter--
             });
         }
     }

@@ -13,6 +13,7 @@
     <script src="./js/render_clients.js" type="module" defer></script>
     <script src="./js/add_client.js" type="module" defer></script>
     <script src="./js/edit_client.js" type="module" defer></script>
+    <script src="./js/sort.js" type="module" defer></script>
 </head>
 
 <body>
@@ -30,19 +31,19 @@
                 <div class="main_columns">
                     <div class="column_id">
                         <p>ID</p>
-                        <img src="./resourses/sort_up.svg" alt="" class="sort">
+                        <img alt="" class="sort id">
                     </div>
                     <div class="column_fio">
                         <p>Фамилия Имя Отчество</p>
-                        <img src="./resourses/sort_down.svg" alt="" class="sort">
+                        <img src="./resourses/sort_down.svg" alt="" class="sort fio">
                     </div>
                     <div class="column_creation_date">
                         <p>Дата и время создания</p>
-                        <img src="./resourses/sort_down.svg" alt="" class="sort">
+                        <img src="./resourses/sort_down.svg" alt="" class="sort creation_date">
                     </div>
                     <div class="column_last_change">
                         <p>Последние изменения</p>
-                        <img src="./resourses/sort_down.svg" alt="" class="sort">
+                        <img src="./resourses/sort_down.svg" alt="" class="sort last_change">
                     </div class="column_contact">
                     <div class="column_contacts">
                         <p>Контакты</p>
@@ -103,31 +104,7 @@
                 <input type="text" class="modal_add_inp" placeholder="Отчество">
             </div>
             <div class="modal_add_contacts">
-                <div class="contact">
-                    <select name="contact_type" id="1" class="contact_type_select">
-                        <option value="Телефон">Телефон</option>
-                        <option value="Почта">Почта</option>
-                        <option value="Вк">Вк</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                    <input type="text" class="contact_value" placeholder="Введите данные контакта">
-                    <button class="remove_contact">
-                        <img src="./resourses/contact_cross_icon.svg" alt="">
-                    </button>
-                </div>
-                <div class="contact">
-                    <select name="contact_type" id="1" class="contact_type_select">
-                        <option value="Телефон">Телефон</option>
-                        <option value="Почта">Почта</option>
-                        <option value="Вк">Вк</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Другое">Другое</option>
-                    </select>
-                    <input type="text" class="contact_value" placeholder="Введите данные контакта">
-                    <button class="remove_contact">
-                        <img src="./resourses/contact_cross_icon.svg" alt="">
-                    </button>
+                <div class="contacts">
                 </div>
                 <button class="modal_add_contact">
                     <img src="./resourses/add_contact_icon.svg" alt="+" class="modal_add_contact_icon">
