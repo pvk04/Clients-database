@@ -10,9 +10,9 @@ const modalAdd = () => {
     let contactsCounter = 0;
     let saveContact = modalAdd.querySelector(".modal_add_save");
     let cancelSave = modalAdd.querySelector(".modal_add_cancel");
-    let id = 0;
     
     buttonAdd.addEventListener("click", () => {
+        contactsCounter = 0;
         modalAdd.classList.add("modal");
         contactsDiv.innerHTML = '';
     });
@@ -62,9 +62,8 @@ const modalAdd = () => {
         let currTime = new Date;
         let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
         let contacts = modalAdd.querySelectorAll(".contact");
-        id++
         let contact = {
-            id,
+            id : arr.length,
             fio: joinFio(fioInputs),
             createTime: currTime,
             lastChange: currTime,
@@ -120,7 +119,7 @@ const modalAdd = () => {
         for (let i = 0; i < btns.length; i++){
             btns[i].addEventListener("click", () => {
                 contacts[i].remove();
-                contactsCounter--
+                return contactsCounter --
             });
         }
     }

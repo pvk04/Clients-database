@@ -1,21 +1,21 @@
 let contact = [{
             id: 1,
             fio: "Громов Алексей Викторович",
-            createTime: new Date,
+            createTime: new Date("01.22.2022 10:00"),
             lastChange: new Date,
             contacts: [{type: "vk", value: "123"}]
         },
         {
             id: 2,
             fio: "Жмышенко Валерий Альбертович",
-            createTime: new Date,
+            createTime: new Date("01.23.2022 11:00"),
             lastChange: new Date,
             contacts: [{type: "fb", value: "321"}]
         },
         {
             id: 3,
             fio: "Бачурин Евгений Сергеевич",
-            createTime: new Date,
+            createTime: new Date("01.23.2022 09:00"),
             lastChange: new Date,
             contacts: [{type: "vk", value: "123"}]
         },

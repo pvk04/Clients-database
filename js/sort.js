@@ -3,10 +3,13 @@ import { renderClients } from "./render_clients.js";
 
 let fioSortCheck = 0;
 let idSortCheck = 0;
-
+let creationDateSort = 0;
+let changeDateSort = 0;
 
 let fioBtn = document.querySelector(".column_fio");
 let idBtn = document.querySelector(".column_id");
+let createBtn = document.querySelector(".column_creation_date");
+let lastChangeBtn = document.querySelector(".column_last_change");
 
 fioBtn.addEventListener("click", () => {
     sortByFio();
@@ -14,6 +17,14 @@ fioBtn.addEventListener("click", () => {
 
 idBtn.addEventListener("click", () => {
     sortById();
+});
+
+createBtn.addEventListener("click", () => {
+    sortByCreationDate();
+});
+
+lastChangeBtn.addEventListener("click", () => {
+    sortByChangeDate()
 });
 
 function sortByFio(){
@@ -72,3 +83,71 @@ function sortById(){
     actions();
 }
 sortById();
+
+function sortByCreationDate(){
+    let array = JSON.parse(localStorage.getItem("clients"));
+    let img = document.querySelector(".creation_date");
+    if (creationDateSort == 0){
+        img.src = "./resourses/sort_up.svg";
+        creationDateSort += 1;
+        array.sort((a,b) => {  
+            if (a.createTime > b.createTime){
+            return 1
+            }
+            if(a.createTime < b.createTime){
+            return -1
+            }
+            return 0
+        });
+    }
+    else{
+        img.src = "./resourses/sort_down.svg";
+        creationDateSort = 0;
+        array.sort((a,b) => {  
+            if (a.createTime > b.createTime){
+            return -1
+            }
+            if(a.createTime < b.createTime){
+            return 1
+            }
+            return 0
+        });
+    }
+    localStorage.setItem("clients", JSON.stringify(array))
+    renderClients();
+    actions();
+}
+
+function sortByChangeDate(){
+    let array = JSON.parse(localStorage.getItem("clients"));
+    let img = document.querySelector(".last_change");
+    if (changeDateSort == 0){
+        img.src = "./resourses/sort_up.svg";
+        changeDateSort += 1;
+        array.sort((a,b) => {  
+            if (a.lastChange > b.lastChange){
+            return 1
+            }
+            if(a.lastChange < b.lastChange){
+            return -1
+            }
+            return 0
+        });
+    }
+    else{
+        img.src = "./resourses/sort_down.svg";
+        changeDateSort = 0;
+        array.sort((a,b) => {  
+            if (a.lastChange > b.lastChange){
+            return -1
+            }
+            if(a.lastChange < b.lastChange){
+            return 1
+            }
+            return 0
+        });
+    }
+    localStorage.setItem("clients", JSON.stringify(array))
+    renderClients();
+    actions();
+}
