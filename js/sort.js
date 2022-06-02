@@ -1,4 +1,3 @@
-import { actions } from "./edit_client.js";
 import { renderClients } from "./render_clients.js";
 
 let fioSortCheck = 0;
@@ -58,7 +57,6 @@ function sortByFio(){
     }
     localStorage.setItem("clients", JSON.stringify(array))
     renderClients();
-    actions();
 }
 
 function sortById(){
@@ -80,7 +78,6 @@ function sortById(){
     }
     localStorage.setItem("clients", JSON.stringify(array))
     renderClients();
-    actions();
 }
 sortById();
 
@@ -115,7 +112,6 @@ function sortByCreationDate(){
     }
     localStorage.setItem("clients", JSON.stringify(array))
     renderClients();
-    actions();
 }
 
 function sortByChangeDate(){
@@ -149,5 +145,4 @@ function sortByChangeDate(){
     }
     localStorage.setItem("clients", JSON.stringify(array))
     renderClients();
-    actions();
 }

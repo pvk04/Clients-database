@@ -1,5 +1,4 @@
 import { renderClients } from "./render_clients.js";
-import { actions } from "./edit_client.js";
 
 const modalAdd = () => {
     let buttonAdd = document.querySelector(".body_add");
@@ -76,7 +75,7 @@ const modalAdd = () => {
             contact.remove();
         }
         renderClients();
-        actions();
+        // actions();
     });
 
     cancelSave.addEventListener("click", () => {

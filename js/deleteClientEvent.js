@@ -1,10 +1,10 @@
 // import { renderClients } from "./render_clients";
 
-export function deleteClientEvent(render){
+export function deleteClientEvent(render) {
     let modalDelete = document.querySelector(".modal_delete_accept");
 
     let delBtns = document.querySelectorAll(".remove_action");
-    for (let btn of delBtns){
+    for (let btn of delBtns) {
         btn.addEventListener("click", () => {
             modalDelete.classList.add("modal");
             let delIndex = btn.dataset.index;
@@ -21,25 +21,25 @@ export function deleteClientEvent(render){
         let isAccept = e.target.closest(".del_accept_btn");
         let delIndex = JSON.parse(localStorage.getItem("deleteIndex"));
 
-        if (!isModal || closeModal || delCancel){
+        if (!isModal || closeModal || delCancel) {
             modalDelete.classList.remove("modal");
         }
-        else if(isAccept){
+        else if (isAccept) {
             deleteClient(delIndex);
             modalDelete.classList.remove("modal");
         }
     });
 
-    function deleteClient(id){
+    function deleteClient(id) {
         let array = JSON.parse(localStorage.getItem("clients"));
         let index;
-        for (let elem of array){
-            if (elem.id == id){
+        for (let elem of array) {
+            if (elem.id == id) {
                 index = array.indexOf(elem);
                 array.splice(index, 1);
                 localStorage.setItem("clients", JSON.stringify(array));
                 localStorage.setItem("deleteIndex", JSON.stringify(null));
-                
+
                 return render();
             }
         }

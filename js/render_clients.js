@@ -1,5 +1,5 @@
 import { deleteClientEvent } from "./deleteClientEvent.js";
-import { actions } from "./edit_client.js";
+import { actions } from "./editClientEvent.js";
 
 let contact = [{
             id: 1,
@@ -79,9 +79,10 @@ export function renderClients(){
         </div>`
         
         div.append(client);
+        deleteClientEvent(renderClients);
     }
-    deleteClientEvent(renderClients);
-    actions(renderClients);
+    actions();
+    
 }
 renderClients();
 
