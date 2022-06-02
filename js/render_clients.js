@@ -1,3 +1,6 @@
+import { deleteClientEvent } from "./deleteClientEvent.js";
+import { actions } from "./edit_client.js";
+
 let contact = [{
             id: 1,
             fio: "Громов Алексей Викторович",
@@ -77,6 +80,8 @@ export function renderClients(){
         
         div.append(client);
     }
+    deleteClientEvent(renderClients);
+    actions(renderClients);
 }
 renderClients();
 

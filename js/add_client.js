@@ -6,13 +6,11 @@ const modalAdd = () => {
     let modalAdd = document.querySelector(".add_form");
     let modalAddClose = modalAdd.querySelector(".close_modal");
     let contactsDiv = modalAdd.querySelector(".contacts");
-    let addContact = modalAdd.querySelector(".modal_add_contact");
-    let contactsCounter = 0;
+    let addContact = modalAdd.querySelector(".add_contact");
     let saveContact = modalAdd.querySelector(".modal_add_save");
     let cancelSave = modalAdd.querySelector(".modal_add_cancel");
     
     buttonAdd.addEventListener("click", () => {
-        contactsCounter = 0;
         modalAdd.classList.add("modal");
         contactsDiv.innerHTML = '';
     });
@@ -31,10 +29,10 @@ const modalAdd = () => {
     });
     
     addContact.addEventListener("click", () => {
-        if (contactsCounter <= 9) {
+        let buttons = document.querySelectorAll(".remove_contact");
+        if (buttons.length < 10) {
             let contact = document.createElement("div");
             contact.classList.add("contact");
-            contact.id = contactsCounter;
             contact.innerHTML = `
             <select name="contact_type" class="contact_type_select">
                 <option value="phone">Телефон</option>
@@ -50,7 +48,6 @@ const modalAdd = () => {
     
             contactsDiv.append(contact);
             delBtns();
-            return contactsCounter++
         }
         else{
             return
@@ -79,7 +76,7 @@ const modalAdd = () => {
             contact.remove();
         }
         renderClients();
-        actions()
+        actions();
     });
 
     cancelSave.addEventListener("click", () => {
@@ -119,7 +116,6 @@ const modalAdd = () => {
         for (let i = 0; i < btns.length; i++){
             btns[i].addEventListener("click", () => {
                 contacts[i].remove();
-                return contactsCounter --
             });
         }
     }
