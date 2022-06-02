@@ -28,16 +28,12 @@ lastChangeBtn.addEventListener("click", () => {
 });
 
 inputFilter.addEventListener("input", () => {
-    let timeout;
     let array = JSON.parse(localStorage.getItem("clients"));
     let value = inputFilter.value;
-    console.log(value)
-    if (value != ""){
-        timeout = setTimeout(() => {filterByFio(array, value)}, 300);
-    }
-    else if (value == ""){
+    let timeout = setTimeout(() => {filterByFio(array, value)}, 300);
+    if (value == ""){
         clearTimeout(timeout);
-        renderClients("clients");
+        timeout = setTimeout(() => {renderClients("clients")}, 300);
     }
 });
 
