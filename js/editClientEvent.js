@@ -10,6 +10,9 @@ export function actions(){
             let arrayClients = JSON.parse(localStorage.getItem("clients"));
             let currentClient;
             let contactsDiv = modalEdit.querySelector(".contacts");
+            let modalId = document.querySelector(".edit_form_id");
+
+            modalId.innerHTML = `ID: ${editIndex}`;
 
             localStorage.setItem("editIndex", JSON.stringify(editIndex));
             contactsDiv.innerHTML = "";

@@ -76,7 +76,7 @@ const modalAdd = () => {
         for (let contact of contacts){
             contact.remove();
         }
-        renderClients();
+        renderClients("clients");
         // actions();
     });
 

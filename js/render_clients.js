@@ -46,9 +46,9 @@ let contact = [{
     ];
 // localStorage.setItem("clients", JSON.stringify(contact));
 
-export function renderClients(){
+export function renderClients(key){
     checkLocalStorage();
-    let array = JSON.parse(localStorage.getItem("clients")) || [];
+    let array = JSON.parse(localStorage.getItem(key)) || [];
     let div = document.querySelector(".clients");
     div.innerHTML = "";
 
@@ -84,7 +84,7 @@ export function renderClients(){
     actions();
     
 }
-renderClients();
+renderClients("clients");
 
 function convertDate(element){
     element = new Date(element);

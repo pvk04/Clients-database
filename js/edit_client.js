@@ -34,7 +34,7 @@ let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
                 contacts: creationGetContacts()};
                 localStorage.setItem("clients", JSON.stringify(arr));
                 modalEdit.classList.remove("modal");
-                renderClients();
+                renderClients("clients");
             }
         }
     });

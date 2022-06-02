@@ -9,6 +9,7 @@ let fioBtn = document.querySelector(".column_fio");
 let idBtn = document.querySelector(".column_id");
 let createBtn = document.querySelector(".column_creation_date");
 let lastChangeBtn = document.querySelector(".column_last_change");
+let inputFilter = document.querySelector(".header_inp");
 
 fioBtn.addEventListener("click", () => {
     sortByFio();
@@ -24,6 +25,20 @@ createBtn.addEventListener("click", () => {
 
 lastChangeBtn.addEventListener("click", () => {
     sortByChangeDate()
+});
+
+inputFilter.addEventListener("input", () => {
+    let timeout;
+    let array = JSON.parse(localStorage.getItem("clients"));
+    let value = inputFilter.value;
+    console.log(value)
+    if (value != ""){
+        timeout = setTimeout(() => {filterByFio(array, value)}, 300);
+    }
+    else if (value == ""){
+        clearTimeout(timeout);
+        renderClients("clients");
+    }
 });
 
 function sortByFio(){
@@ -56,7 +71,7 @@ function sortByFio(){
       });
     }
     localStorage.setItem("clients", JSON.stringify(array))
-    renderClients();
+    renderClients("clients");
 }
 
 function sortById(){
@@ -77,7 +92,7 @@ function sortById(){
         });
     }
     localStorage.setItem("clients", JSON.stringify(array))
-    renderClients();
+    renderClients("clients");
 }
 sortById();
 
@@ -111,7 +126,7 @@ function sortByCreationDate(){
         });
     }
     localStorage.setItem("clients", JSON.stringify(array))
-    renderClients();
+    renderClients("clients");
 }
 
 function sortByChangeDate(){
@@ -144,5 +159,19 @@ function sortByChangeDate(){
         });
     }
     localStorage.setItem("clients", JSON.stringify(array))
-    renderClients();
+    renderClients("clients");
+}
+
+function filterByFio(array, value){
+    if (value == "") {
+        renderClients("clients");
+    }
+    else{
+        let res = array.filter((el) => {
+            return el.fio.toLowerCase().includes(value.trim().toLowerCase())
+        });
+
+        localStorage.setItem("filter", JSON.stringify(res));
+        renderClients("filter"); 
+    }    
 }

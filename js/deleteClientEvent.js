@@ -1,4 +1,3 @@
-// import { renderClients } from "./render_clients";
 
 export function deleteClientEvent(render) {
     let modalDelete = document.querySelector(".modal_delete_accept");
@@ -42,7 +41,7 @@ export function deleteClientEvent(render) {
                 localStorage.setItem("clients", JSON.stringify(array));
                 localStorage.setItem("deleteIndex", JSON.stringify(null));
 
-                return render();
+                return render("clients");
             }
         }
     }
