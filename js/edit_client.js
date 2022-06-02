@@ -1,56 +1,11 @@
 import {renderClients} from "./render_clients.js"
 
 let modalEdit = document.querySelector(".edit_form");
+let modalDelete = document.querySelector(".modal_delete_accept");
 let saveEdit = modalEdit.querySelector(".modal_add_save");
 let addContactEdit = modalEdit.querySelector(".edit_contact");
-
-// export function actions(){
-//     let editBtns = document.querySelectorAll(".edit_action");
-//     for (let btn of editBtns){
-//         btn.addEventListener("click", () => {
-//             modalEdit.classList.add("modal");
-//             let editIndex = btn.dataset.index;
-//             let arrayClients = JSON.parse(localStorage.getItem("clients"));
-//             let currentClient;
-//             let contactsDiv = modalEdit.querySelector(".contacts");
-
-//             localStorage.setItem("editIndex", JSON.stringify(editIndex));
-//             contactsDiv.innerHTML = "";
-
-//             for (let elem of arrayClients){
-//                 if (elem.id == editIndex){
-//                     currentClient = elem;
-//                 }
-//             }
-
-//             let fioArr = currentClient.fio.split(" ");
-//             let fioInputs = modalEdit.querySelectorAll(".modal_add_inp");
-//             fioInputs[0].value = fioArr[0];
-//             fioInputs[1].value = fioArr[1];
-//             fioInputs[2].value = fioArr[2];
-                
-//             for (let elem of currentClient.contacts){
-//                 let contact = document.createElement("div");
-//                 contact.classList.add("contact");
-//                 contact.innerHTML = `
-//                 <select name="contact_type" class="contact_type_select">
-//                     ${selected(elem)}
-//                 </select>
-//                 <input type="text" class="contact_value" placeholder="Введите данные контакта" value="${elem.value}">
-//                 <button class="remove_contact">
-//                     <img src="./resourses/contact_cross_icon.svg" alt="" class="remove_contact_icon">
-//                 </button>`;
-
-                    
-//                 contactsDiv.append(contact);
-//                 delBtns();
-//             }
-//         });
-//     }
-// }
+let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
   
-
-    
     modalEdit.addEventListener("click", (e) => {
         e.preventDefault();
         let isModal = e.target.closest(".modal_inner");
@@ -109,6 +64,13 @@ let addContactEdit = modalEdit.querySelector(".edit_contact");
         else{
             return
         }
+    });
+
+    modalEditDel.addEventListener("click", () => {
+        let editIndex = JSON.parse(localStorage.getItem("editIndex"));
+        localStorage.setItem("deleteIndex", JSON.stringify(editIndex));
+
+        modalDelete.classList.add("modal")
     });
 
     function delBtns(){

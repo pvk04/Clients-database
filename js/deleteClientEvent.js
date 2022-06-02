@@ -2,6 +2,7 @@
 
 export function deleteClientEvent(render) {
     let modalDelete = document.querySelector(".modal_delete_accept");
+    let modalEdit = document.querySelector(".edit_form");
 
     let delBtns = document.querySelectorAll(".remove_action");
     for (let btn of delBtns) {
@@ -27,6 +28,7 @@ export function deleteClientEvent(render) {
         else if (isAccept) {
             deleteClient(delIndex);
             modalDelete.classList.remove("modal");
+            modalEdit.classList.remove("modal");
         }
     });
 

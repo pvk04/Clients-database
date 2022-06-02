@@ -58,8 +58,9 @@ const modalAdd = () => {
         let currTime = new Date;
         let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
         let contacts = modalAdd.querySelectorAll(".contact");
+        let id = JSON.parse(localStorage.getItem("lastId"))+1 || 1;
         let contact = {
-            id : arr.length,
+            id,
             fio: joinFio(fioInputs),
             createTime: currTime,
             lastChange: currTime,
@@ -68,6 +69,7 @@ const modalAdd = () => {
 
         arr.push(contact);
         localStorage.setItem("clients", JSON.stringify(arr));
+        localStorage.setItem("lastId", JSON.stringify(id));
         for (let inp of fioInputs){
             inp.value = "";
         }
