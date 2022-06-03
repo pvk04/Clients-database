@@ -13,6 +13,8 @@ const sort = () => {
     let createBtn = document.querySelector(".column_creation_date");
     let lastChangeBtn = document.querySelector(".column_last_change");
     let inputFilter = document.querySelector(".header_inp");
+    let datalist = document.querySelector("datalist");
+
 
     fioBtn.addEventListener("click", () => {
         sortByFio();
@@ -31,9 +33,17 @@ const sort = () => {
     });
 
     inputFilter.addEventListener("input", () => {
+        datalist.innerHTML = "";
         clearTimeout(timeout);
         let array = JSON.parse(localStorage.getItem("clients"));
         let value = inputFilter.value;
+        
+        for (let elem of array){
+            let opt = document.createElement("option");
+            opt.textContent = elem.fio;
+            datalist.append(opt)
+        }
+
         timeout = setTimeout(() => {filterByFio(array, value)}, 600);
         if (value == ""){
             clearTimeout(timeout);
