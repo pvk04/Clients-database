@@ -1,4 +1,3 @@
-
 export function deleteClientEvent(render) {
     let modalDelete = document.querySelector(".modal_delete_accept");
     let modalEdit = document.querySelector(".edit_form");
@@ -45,5 +44,4 @@ export function deleteClientEvent(render) {
             }
         }
     }
-
 }

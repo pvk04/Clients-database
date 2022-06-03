@@ -1,10 +1,11 @@
 import {renderClients} from "./render_clients.js"
 
-let modalEdit = document.querySelector(".edit_form");
-let modalDelete = document.querySelector(".modal_delete_accept");
-let saveEdit = modalEdit.querySelector(".modal_add_save");
-let addContactEdit = modalEdit.querySelector(".edit_contact");
-let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
+const edit = () => {
+    let modalEdit = document.querySelector(".edit_form");
+    let modalDelete = document.querySelector(".modal_delete_accept");
+    let saveEdit = modalEdit.querySelector(".modal_add_save");
+    let addContactEdit = modalEdit.querySelector(".edit_contact");
+    let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
   
     modalEdit.addEventListener("click", (e) => {
         e.preventDefault();
@@ -18,25 +19,55 @@ let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
     });
 
     saveEdit.addEventListener("click", () => {
-
+        let check = true
         let arr = JSON.parse(localStorage.getItem("clients"));
         let changeTime = new Date;
         let fioInputs = modalEdit.querySelectorAll(".modal_add_inp");
         let id = JSON.parse(localStorage.getItem("editIndex"));
-        for (let client of arr){
-            if (client.id == id){
-                let index = arr.indexOf(client);
-                arr[index] = {
-                id : arr[index].id,
-                fio: joinFio(fioInputs),
-                createTime: arr[index].createTime,
-                lastChange: changeTime,
-                contacts: creationGetContacts()};
-                localStorage.setItem("clients", JSON.stringify(arr));
-                modalEdit.classList.remove("modal");
-                renderClients("clients");
+        let contactInputs = modalEdit.querySelectorAll(".contact_value");
+
+        if (fioInputs[0].value == ""){
+            check = false;
+            fioInputs[0].classList.add("empty-field");
+            fioInputs[0].addEventListener("input", () => {
+                fioInputs[0].classList.remove("empty-field");
+            });
+        }
+        if (fioInputs[1].value == ""){
+            check = false;
+            fioInputs[1].classList.add("empty-field");
+            fioInputs[1].addEventListener("input", () => {
+                fioInputs[1].classList.remove("empty-field");
+            });
+        }
+
+        for (let i = 0; i < contactInputs.length; i++){
+            if (contactInputs[i].value == ""){
+                check = false;
+                contactInputs[i].classList.add("empty-contact");
+                contactInputs[i].addEventListener("input", () => {
+                    contactInputs[i].classList.remove("empty-contact");
+                });
             }
         }
+
+        if (check){
+            for (let client of arr){
+                if (client.id == id){
+                    let index = arr.indexOf(client);
+                    arr[index] = {
+                    id : arr[index].id,
+                    fio: joinFio(fioInputs),
+                    createTime: arr[index].createTime,
+                    lastChange: changeTime,
+                    contacts: creationGetContacts()};
+                    localStorage.setItem("clients", JSON.stringify(arr));
+                    modalEdit.classList.remove("modal");
+                    renderClients("clients");
+                }
+            }
+        }
+        
     });
 
     addContactEdit.addEventListener("click", () => {
@@ -103,4 +134,5 @@ let modalEditDel =modalEdit.querySelector(".modal_add_cancel");
         }
         return contactsArr;
     }
-
+}
+edit();

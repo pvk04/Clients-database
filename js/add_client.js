@@ -54,30 +54,60 @@ const modalAdd = () => {
     });
     
     saveContact.addEventListener("click", () => {
+        let check = true;
         let arr = JSON.parse(localStorage.getItem("clients"));
         let currTime = new Date;
         let fioInputs = modalAdd.querySelectorAll(".modal_add_inp");
         let contacts = modalAdd.querySelectorAll(".contact");
         let id = JSON.parse(localStorage.getItem("lastId"))+1 || 1;
-        let contact = {
-            id,
-            fio: joinFio(fioInputs),
-            createTime: currTime,
-            lastChange: currTime,
-            contacts: creationGetContacts()
+        let inputs = modalAdd.querySelectorAll(".modal_add_inp");
+        let contactInputs = modalAdd.querySelectorAll(".contact_value");
+
+        if (inputs[0].value.trim() == ""){
+            check = false;
+            inputs[0].classList.add("empty-field");
+            inputs[0].addEventListener("input", () => {
+                inputs[0].classList.remove("empty-field");
+            });
+        }
+        if (inputs[1].value.trim() == ""){
+            check = false;
+            inputs[1].classList.add("empty-field");
+            inputs[1].addEventListener("input", () => {
+                inputs[1].classList.remove("empty-field");
+            });
         }
 
-        arr.push(contact);
-        localStorage.setItem("clients", JSON.stringify(arr));
-        localStorage.setItem("lastId", JSON.stringify(id));
-        for (let inp of fioInputs){
-            inp.value = "";
+        for (let i = 0; i < contactInputs.length; i++){
+            if (contactInputs[i].value.trim() == ""){
+                check = false;
+                contactInputs[i].classList.add("empty-contact");
+                contactInputs[i].addEventListener("input", () => {
+                    contactInputs[i].classList.remove("empty-contact");
+                });
+            }
         }
-        for (let contact of contacts){
-            contact.remove();
+
+        if (check){
+           let contact = {
+                id,
+                fio: joinFio(fioInputs),
+                createTime: currTime,
+                lastChange: currTime,
+                contacts: creationGetContacts()
+            }
+            arr.push(contact);
+            localStorage.setItem("clients", JSON.stringify(arr));
+            localStorage.setItem("lastId", JSON.stringify(id));
+            for (let inp of fioInputs){
+                inp.value = "";
+            }
+            for (let contact of contacts){
+                contact.remove();
+            }
+            renderClients("clients"); 
         }
-        renderClients("clients");
-        // actions();
+        
     });
 
     cancelSave.addEventListener("click", () => {

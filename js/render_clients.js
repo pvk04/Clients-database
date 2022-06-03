@@ -1,51 +1,6 @@
 import { deleteClientEvent } from "./deleteClientEvent.js";
 import { actions } from "./editClientEvent.js";
 
-let contact = [{
-            id: 1,
-            fio: "Громов Алексей Викторович",
-            createTime: new Date("01.22.2022 10:00"),
-            lastChange: new Date,
-            contacts: [{type: "vk", value: "123"}]
-        },
-        {
-            id: 2,
-            fio: "Жмышенко Валерий Альбертович",
-            createTime: new Date("01.23.2022 11:00"),
-            lastChange: new Date,
-            contacts: [{type: "fb", value: "321"}]
-        },
-        {
-            id: 3,
-            fio: "Бачурин Евгений Сергеевич",
-            createTime: new Date("01.23.2022 09:00"),
-            lastChange: new Date,
-            contacts: [{type: "vk", value: "123"}]
-        },
-        {
-            id: 4,
-            fio: "Терентьев Михаил Павлович",
-            createTime: new Date,
-            lastChange: new Date,
-            contacts: [{type: "vk", value: "123"}]
-        },
-        {
-            id: 5,
-            fio: "TEST test test",
-            createTime: new Date,
-            lastChange: new Date,
-            contacts: [{type: "vk", value: "123"}]
-        },
-        {
-            id: 6,
-            fio: "Иномжонов Ислом Угли",
-            createTime: new Date,
-            lastChange: new Date,
-            contacts: [{type: "vk", value: "123"}]
-        }
-    ];
-// localStorage.setItem("clients", JSON.stringify(contact));
-
 export function renderClients(key){
     checkLocalStorage();
     let array = JSON.parse(localStorage.getItem(key)) || [];

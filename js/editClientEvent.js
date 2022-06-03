@@ -1,7 +1,6 @@
 let modalEdit = document.querySelector(".edit_form");
 
 export function actions(){
-    
     let editBtns = document.querySelectorAll(".edit_action");
     for (let btn of editBtns){
         btn.addEventListener("click", () => {
